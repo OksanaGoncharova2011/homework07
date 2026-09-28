@@ -27,8 +27,6 @@ void main() {
           distansCovered = distansCovered += step;
     } while (distansCovered < distens);
 
-
-
     // Вторая версия: цикл for
     System.out.println("Версия с циклом for:");
 
@@ -44,9 +42,118 @@ void main() {
     }
 
 
+    int budgetWhile = 1000; // начальный бюджет
+    int dayWhile = 1;       // начинаем с первого дня
 
-    //task3
-    System.out.println( "task 3" );
+    while (budgetWhile > 0) {
+
+        // Каждый 5-й день бесплатный
+        if (dayWhile % 5 == 0) {
+            dayWhile++;
+            continue;
+        }
+
+        // Обычный день стоит 100 рублей
+        budgetWhile -= 100;
+        dayWhile++;
+    }
+
+    // Количество дней = последний день - 1
+    int daysWhile = dayWhile - 1;
+
+    System.out.println("Версия while:");
+    System.out.println("Бюджет: 1000 ₽");
+    System.out.println("Автомобиль можно оставить на " + daysWhile + " дней.");
+
+    // =========================================================
+    // 2. Версия с циклом for
+    // =========================================================
+
+    int budgetFor = 10000; // начальный бюджет
+    int dayFor;
+
+    for (dayFor = 1; budgetFor > 0; dayFor++) {
+
+        // Каждый 5-й день бесплатный
+        if (dayFor % 5 == 0) {
+            continue;
+        }
+
+        // Обычный день стоит 100 рублей
+        budgetFor -= 100;
+    }
+
+    // Количество дней = последний день - 1
+    int daysFor = dayFor - 1;
+
+    System.out.println();
+    System.out.println("Версия for:");
+    System.out.println("Бюджет: 1000 ₽");
+    System.out.println("Автомобиль можно оставить на " + daysFor + " дней.");
+
+    // =========================================================
+    // 3. Проверка одинакового результата
+    // =========================================================
+
+    System.out.println();
+
+    if (daysWhile == daysFor) {
+        System.out.println("Результат обеих версий одинаковый.");
+    } else {
+        System.out.println("Результаты отличаются.");
+    }
+    // zadanie 4
+    int month = 0;
+    double total = 0;
+
+    while (true) {
+        month++;
+
+        total += 15000;
+
+        if (month % 6 == 0) {
+            total += total * 7 / 100;
+        }
+
+        System.out.println("Месяц " + month + ": " + total);
+
+        if (total >= 12000000) {
+            break;
+        }
+    }
+    // zadanie 5
+    int charge = 20;
+    int minute = 0;
+    int overheats = 0;
+
+    while (charge < 100 && overheats <= 3) {
+
+        minute++;
+
+        if (minute % 10 == 0) {
+            overheats++;
+
+            System.out.println("Перегрев! Количество перегревов: " + overheats);
+
+            if (overheats > 3) {
+                break;
 
 
+            }
+
+            minute += 2;
+
+            continue;
+        }
+
+        charge += 2;
+    }
+
+    if (overheats > 3) {
+        System.out.println("Зарядка прекращена. Текущий заряд: " + charge + "%");
+    } else {
+        System.out.println("Зарядка завершена. Текущий заряд: " + charge + "%");
+    }
+
+    System.out.println("Время зарядки составило " + minute + " минут");
 }
