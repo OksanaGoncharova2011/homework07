@@ -148,7 +148,6 @@ void main() {
 
         charge += 2;
     }
-
     if (overheats > 3) {
         System.out.println("Зарядка прекращена. Текущий заряд: " + charge + "%");
     } else {
